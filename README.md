@@ -18,15 +18,20 @@ For example, if your User Story is New and you create a task and set that task t
     "SourceForRules": "https://raw.githubusercontent.com/microsoft/azure-boards-automate-state-transitions/master/src/AutoStateTransitions/Rules/"
     ```  
 
+2. Also include your "Organization" in the appsettings.json, i.e if your Azure DevOps url is https://dev.azure.com/contoso or https://contoso.visualstudio.com/ then write `contoso` as your organization.
+
 3. Deploy the project so that it is available from the Azure DevOps instance.
 
 4. Create a new web hook for the child work item types. In this example we are just setting up web hooks for when Task work items are updated. The web hook should send when the state field is changed.
 
    ![](./media/web-hooks-1.png)
    
-Populate the URL Field with the url from the deployed instance carried out in previous step along with /api/receiver/webhook/workitem/update appened.
+5. Populate the URL Field with the url from the deployed instance carried out in previous step along with /api/receiver/webhook/workitem/update appended. Leave the rest with default options:
+    - Resource details to send: All
+    - Messages to send: All
+    - Detailed messages to send: All
 
-   ![](./media/web-hooks-2.png)
+    ![](./media/web-hooks-2.png)
 
 5. Update the rules in the JSON configuration file for each child work item type. In this example we are going to update the Task (rule.task.json). You will need an entry for each state.
 
@@ -86,7 +91,7 @@ Populate the URL Field with the url from the deployed instance carried out in pr
       "ifChildState": "Closed",
       "notParentStates": [],
       "setParentStateTo": "Closed",
-      "allChildren": false
+      "allChildren": true
     },
     ````
 
