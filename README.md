@@ -21,6 +21,7 @@ For example, if your User Story is New and you create a task and set that task t
 2. Also include your "Organization" in the appsettings.json, i.e if your Azure DevOps url is https://dev.azure.com/contoso or https://contoso.visualstudio.com/ then write `contoso` as your organization.
 
 3. Deploy the project as Azure Web App with runtime stack ".NET Core 3.1 LTS" so that it is available from the Azure DevOps instance.
+    - Once your website is deployed, check that your website is running at https://<your_website>.azurewebsites.net/health
 
 4. Create a new web hook for the child work item types. In this example we are just setting up web hooks for when Task work items are updated. The web hook should send when the state field is changed.
 
